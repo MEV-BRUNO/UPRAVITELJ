@@ -11,13 +11,13 @@ namespace Upravitelj.Models
         [Required]
         public int id_zgrada { get; set; }
 
-        [Required(1, 50, ErrorMessage = "Naziv zgrade je obavezan!")]
+        [Range(1, 50, ErrorMessage = "Naziv zgrade je obavezan!")]
         public string naziv { get; set; }
 
-        [Required(1, 40, ErrorMessage = "Naziv ulice je obavezan!")]
+        [Range(1, 40, ErrorMessage = "Naziv ulice je obavezan!")]
         public string ulica { get; set; }
 
-        [Required(1, 30, ErrorMessage = "Naziv grada je obavezan!")]
+        [Range(1, 30, ErrorMessage = "Naziv grada je obavezan!")]
         public string grad { get; set; }
 
         [Required]
