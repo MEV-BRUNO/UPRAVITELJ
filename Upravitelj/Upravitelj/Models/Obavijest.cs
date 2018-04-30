@@ -15,7 +15,7 @@ namespace Upravitelj.Models
         [DataType(DataType.Date)]
         public DateTime datum { get; set; }
 
-        [Required(1, 60, ErrorMessage = "Naslov je obavezan!")]
+        [Range(1, 60, ErrorMessage = "Naslov je obavezan!")]
         public string naslov { get; set; }
 
         [Required(ErrorMessage = "Opis je obavezan!")]
