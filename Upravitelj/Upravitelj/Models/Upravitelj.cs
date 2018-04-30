@@ -11,7 +11,7 @@ namespace Upravitelj.Models
         [Required]
         public int id_upravitelj { get; set; }
 
-        [Required(1, 50, ErrorMessage = "Unesite vaše ime i prezime!")]
+        [Range(1, 50, ErrorMessage = "Unesite vaše ime i prezime!")]
         public string ime_prezime { get; set; }
 
         [EmailAddress]
