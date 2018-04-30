@@ -14,14 +14,14 @@ namespace Upravitelj.Models
         [Required]
         public int id_stanar { get; set; }
 
-        [Required(ErrorMessage = "Upisite datum.")]
+        [Range(ErrorMessage = "Upisite datum.")]
         [DataType(DataType.Date)]
         public DateTime datum { get; set; }
 
-        [Required(1, 60, ErrorMessage = "Naslov je obavezan!")]
+        [Range(1, 60, ErrorMessage = "Naslov je obavezan!")]
         public string naslov { get; set; }
 
-        [Required(ErrorMessage = "Opis je obavezan!")]
+        [Range(ErrorMessage = "Opis je obavezan!")]
         public string opis { get; set; }
 
         [Range(typeof(bool), "1", "0")]
