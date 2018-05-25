@@ -1,314 +1,272 @@
 ﻿<!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-
- <!-- BEGIN HEAD -->
-                   <head>
-                       <meta charset="UTF-8" />
-                       <title>BCORE Admin Dashboard Template | Data Tables</title>
-                       <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-                       <meta content="" name="description" />
-                       <meta content="" name="author" />
-                       <!--[if IE]>
-       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-       <![endif]-->
-                       <!-- GLOBAL STYLES -->
-                       <!-- GLOBAL STYLES -->
-                       <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.css" />
-                       <link rel="stylesheet" href="assets/css/main.css" />
-                       <link rel="stylesheet" href="assets/css/theme.css" />
-                       <link rel="stylesheet" href="assets/css/MoneAdmin.css" />
-                       <link rel="stylesheet" href="assets/plugins/Font-Awesome/css/font-awesome.css" />
-                       <link rel="stylesheet" href="assets/css/tablica.css" />
-                       <!--END GLOBAL STYLES -->
-                       <!-- PAGE LEVEL STYLES -->
-                       <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-                       <!-- END PAGE LEVEL  STYLES -->
-                       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-                       <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="UTF-8" />
+    <title>BCORE Admin Dashboard Template | Data Tables</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <script type="text/javascript" src="table_script.js"></script>
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <![endif]-->
-                   </head>
-     <!-- END HEAD -->
-     <!-- BEGIN BODY -->
-                   <body class="padTop53 ">
+    <!-- GLOBAL STYLES -->
+    <!-- GLOBAL STYLES -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/theme.css" />
+    <link rel="stylesheet" href="assets/css/MoneAdmin.css" />
+    <link rel="stylesheet" href="assets/plugins/Font-Awesome/css/font-awesome.css" />
+    <!--END GLOBAL STYLES -->
+    <!-- PAGE LEVEL STYLES -->
+    <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+    <!-- END PAGE LEVEL  STYLES -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <script type="text/javascript" src="table_script.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="padTop53 ">
 
-                       <!-- MAIN WRAPPER -->
-                       <div id="wrap">
-
-
-                           <!-- HEADER SECTION -->
-                           <div id="top">
-
-                               <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-top: 10px;">
-                                   <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle">
-                                       <i class="icon-align-justify"></i>
-                                   </a>
-                                   <!-- LOGO SECTION -->
-                                   <header class="navbar-header">
-
-                                       <a href="index.html" class="navbar-brand">
-                                           <img src="assets/img/logo.png" alt="" />
-                                       </a>
-                                   </header>
-                                   <!-- END LOGO SECTION -->
-                                   <ul class="nav navbar-top-links navbar-right">
-
-                                       <!--ADMIN SETTINGS SECTIONS -->
-
-                                       <li class="dropdown">
-                                           <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                               <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
-                                           </a>
-
-                                           <ul class="dropdown-menu dropdown-user">
-                                               <li>
-                                                   <a href="#"><i class="icon-user"></i> Korisnički profil </a>
-                                               </li>
-                                               <li>
-                                                   <a href="#"><i class="icon-gear"></i> Osobne postavke </a>
-                                               </li>
-                                               <li class="divider"></li>
-                                               <li>
-                                                   <a href="login.html"><i class="icon-signout"></i> Odjava </a>
-                                               </li>
-                                           </ul>
-
-                                       </li>
-                                       <!--END ADMIN SETTINGS -->
-                                   </ul>
-
-                               </nav>
-
-                           </div>
-                           <!-- END HEADER SECTION -->
-                           <!-- MENU SECTION -->
-                           <div id="left">
-                               <div class="media user-media well-small">
-                                   <a class="user-link" href="#">
-                                       <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/user.png" />
-                                   </a>
-                                   <br />
-                                   <div class="media-body">
-                                       <h5 class="media-heading">UPRAVITELJ</h5>
-                                   </div>
-                                   <br />
-                               </div>
-
-                               <ul id="menu" class="collapse">
-                                   <li>
-                                   <li class="panel">
-                                       <a href="prijava.html">
-                                           <i class="icon-lock"></i> PRIJAVA
-                                       </a>
-                                   </li>
-                                   <li class="panel">
-                                       <a href="obavijesti.html">
-                                           <i class="icon-exclamation"></i> OBAVIJESTI
-                                       </a>
-                                   </li>
-
-                                   <li class="panel">
-                                       <a href="public.html">
-                                           <i class="icon-question"></i> O PROJEKTU
-                                       </a>
-
-                                   <li class="panel ">
-                                       <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
-                                           <i class="icon-tasks"> </i> ADMINISTRATIVNI DIO-upravitelj
-
-                                           <span class="pull-right">
-                                               <i class="icon-angle-left"></i>
-                                           </span>
-                                       </a>
-                                       <ul class="collapse" id="component-nav">
-                                           <li class=""><a href="Zgrade.html"><i class="icon-angle-right"></i> Zgrade </a></li>
-                                           <li class=""><a href="stanari.html"><i class="icon-angle-right"></i> Stanari </a></li>
-                                           <li class=""><a href="Upiti-admin.html"><i class="icon-angle-right"></i> Upiti </a></li>
-                                           <li class=""><a href="Financije.html"><i class="icon-angle-right"></i> Financije </a></li>
-                                           <li class=""><a href="obavijesti-admin.html"><i class="icon-angle-right"></i> Obavijesti </a></li>
-                                           <li class=""><a href="Arhiva.html"><i class="icon-angle-right"></i> Arhiva </a></li>
-
-                                       </ul>
-                                   </li>
-                                   <li class="panel ">
-                                       <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-rod">
-                                           <i class="icon-tasks"> </i> ADMINISTRATIVNI DIO-stanari
-
-                                           <span class="pull-right">
-                                               <i class="icon-angle-left"></i>
-                                           </span>
-                                       </a>
-                                       <ul class="collapse" id="component-rod">
-                                           <li class=""><a href="Osobni Podaci.html"><i class="icon-angle-right"></i>  Osobni Podaci </a></li>
-                                           <li class=""><a href="Upiti-predstavnik.html"><i class="icon-angle-right"></i> Upiti </a></li>
-                                           <li class=""><a href="Financije-stanar.html"><i class="icon-angle-right"></i> Financije </a></li>
-                                       </ul>
-                                   </li>
+    <!-- MAIN WRAPPER -->
+    <div id="wrap">
 
 
-                               </ul>
+        <!-- HEADER SECTION -->
+        <div id="top">
 
-                           </div>
-                           <!--END MENU SECTION -->
-                           <!--PAGE CONTENT -->
-                           <div class="container">
-                               <h1>Popis zgrada</h1>
-                               <label>
-                                   <input type="text" id="financije" onkeyup="financije()" placeholder="Filter/zgrada" title="Type in a name">
-                               </label>
-                               <label>
-                                   <input type="text" id="financije1" onkeyup="financije1()" placeholder="Filter/mjesec" title="Type in a name">
-                               </label>
-                               <label>
-                                   <input type="text" id="financije2" onkeyup="financije2()" placeholder="Filter/godina" title="Type in a name">
-                               </label>
-                               <label>
-                                   <input type="text" id="financije3" onkeyup="financije3()" placeholder="Filter/izvjesce" title="Type in a name">
-                               </label>
-                               <div id="table" class="table-editable">
-                                   <span class="table-add glyphicon glyphicon-plus"></span>
-                                   <table class="table">
-                                       <tr>
-                                           <th>Ime zgrade</th>
-                                           <th>Novci/kraj mjeseca</th>
-                                           <th>Novci/Godina</th>
-                                           <th>Financijsko izvjesce/kraj mjeseca</th>
-                                       </tr>
-                                       <tr>
-                                           <td contenteditable="true">Unos</td>
-                                           <td contenteditable="true">Unos</td>
-                                           <td contenteditable="true">Unos</td>
-                                           <td contenteditable="true">Unos</td>
-                                           <td>
-                                               <span class="table-remove glyphicon glyphicon-remove"></span>
-                                           </td>
-                                           <td>
-                                               <span class="table-up glyphicon glyphicon-arrow-up"></span>
-                                               <span class="table-down glyphicon glyphicon-arrow-down"></span>
-                                           </td>
-                                       </tr>
-                                       <!-- This is our clonable table line -->
-                                       <tr class="hide">
-                                           <td contenteditable="true">Unos</td>
-                                           <td contenteditable="true">Unos</td>
-                                           <td contenteditable="true">Unos</td>
-                                           <td contenteditable="true">Unos</td>
-                                           <td>
-                                               <span class="table-remove glyphicon glyphicon-remove"></span>
-                                           </td>
-                                           <td>
-                                               <span class="table-up glyphicon glyphicon-arrow-up"></span>
-                                               <span class="table-down glyphicon glyphicon-arrow-down"></span>
-                                           </td>
-                                       </tr>
-                                   </table>
-                               </div>
-                           </div>
-                           <!--END PAGE CONTENT -->
+            <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-top: 10px;">
+                <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle">
+                    <i class="icon-align-justify"></i>
+                </a>
+                <!-- LOGO SECTION -->
+                <header class="navbar-header">
+
+                    <a href="index.html" class="navbar-brand">
+                        <img src="assets/img/logo.png" alt="" />
+                    </a>
+                </header>
+                <!-- END LOGO SECTION -->
+                <ul class="nav navbar-top-links navbar-right">
+
+                    <!--ADMIN SETTINGS SECTIONS -->
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
+                        </a>
+
+                        <ul class="dropdown-menu dropdown-user">
+                            <li>
+                                <a href="#"><i class="icon-user"></i> Korisnički profil </a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icon-gear"></i> Osobne postavke </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="login.html"><i class="icon-signout"></i> Odjava </a>
+                            </li>
+                        </ul>
+
+                    </li>
+                    <!--END ADMIN SETTINGS -->
+                </ul>
+
+            </nav>
+
+        </div>
+        <!-- END HEADER SECTION -->
+        <!-- MENU SECTION -->
+        <div id="left">
+            <div class="media user-media well-small">
+                <a class="user-link" href="#">
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="assets/img/user.png" />
+                </a>
+                <br />
+                <div class="media-body">
+                    <h5 class="media-heading">UPRAVITELJ</h5>
+                </div>
+                <br />
+            </div>
+
+            <ul id="menu" class="collapse">
+                <li>
+                <li class="panel">
+                    <a href="prijava.html">
+                        <i class="icon-lock"></i> PRIJAVA
+                    </a>
+                </li>
+                <li class="panel">
+                    <a href="obavijesti.html">
+                        <i class="icon-exclamation"></i> OBAVIJESTI
+                    </a>
+                </li>
+
+                <li class="panel">
+                    <a href="public.html">
+                        <i class="icon-question"></i> O PROJEKTU
+                    </a>
+
+                <li class="panel ">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
+                        <i class="icon-tasks"> </i> ADMINISTRATIVNI DIO-upravitelj
+
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                    </a>
+                    <ul class="collapse" id="component-nav">
+                        <li class=""><a href="Zgrade.html"><i class="icon-angle-right"></i> Zgrade </a></li>
+                        <li class=""><a href="stanari.html"><i class="icon-angle-right"></i> Stanari </a></li>
+                        <li class=""><a href="Upiti-admin.html"><i class="icon-angle-right"></i> Upiti </a></li>
+                        <li class=""><a href="Financije.html"><i class="icon-angle-right"></i> Financije </a></li>
+                        <li class=""><a href="obavijesti-admin.html"><i class="icon-angle-right"></i> Obavijesti </a></li>
+                        <li class=""><a href="Arhiva.html"><i class="icon-angle-right"></i> Arhiva </a></li>
+
+                    </ul>
+                </li>
+                <li class="panel ">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-rod">
+                        <i class="icon-tasks"> </i> ADMINISTRATIVNI DIO-stanari
+
+                        <span class="pull-right">
+                            <i class="icon-angle-left"></i>
+                        </span>
+                    </a>
+                    <ul class="collapse" id="component-rod">
+                        <li class=""><a href="Osobni Podaci.html"><i class="icon-angle-right"></i>  Osobni Podaci </a></li>
+                        <li class=""><a href="Upiti-predstavnik.html"><i class="icon-angle-right"></i> Upiti </a></li>
+                        <li class=""><a href="Financije-stanar.html"><i class="icon-angle-right"></i> Financije </a></li>
+                    </ul>
+                </li>
 
 
-                       </div>
+            </ul>
 
-                       <!--END MAIN WRAPPER -->
-                       <!-- FOOTER -->
-                       <div id="footer">
-                           <p>&copy;  binarytheme &nbsp;2014 &nbsp;</p>
-                       </div>
-                       <!--END FOOTER -->
-                       <!-- GLOBAL SCRIPTS -->
-                       <script src="assets/plugins/jquery-2.0.3.min.js"></script>
-                       <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-                       <script src="assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-                       <script src="assets/plugins/tablica.js"></script>
-                       <!-- END GLOBAL SCRIPTS -->
-                       <!-- PAGE LEVEL SCRIPTS -->
-                       <script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
-                       <script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
-                       <script>
-                           $(document).ready(function () {
-                               $('#dataTables-example').dataTable();
-                           });
-                       </script>
-                       <script>
-                           function financije() {
-                               var input, filter, table, tr, td, i;
-                               input = document.getElementById("financije");
-                               filter = input.value.toUpperCase();
-                               table = document.getElementById("table");
-                               tr = table.getElementsByTagName("tr");
-                               for (i = 0; i < tr.length; i++) {
-                                   td = tr[i].getElementsByTagName("td")[0];
-                                   if (td) {
-                                       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                           tr[i].style.display = "";
-                                       } else {
-                                           tr[i].style.display = "none";
-                                       }
-                                   }
-                               }
-                           }
-                       </script>
-                       <script>
-                           function financije1() {
-                               var input, filter, table, tr, td, i;
-                               input = document.getElementById("financije1");
-                               filter = input.value.toUpperCase();
-                               table = document.getElementById("table");
-                               tr = table.getElementsByTagName("tr");
-                               for (i = 0; i < tr.length; i++) {
-                                   td = tr[i].getElementsByTagName("td")[1];
-                                   if (td) {
-                                       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                           tr[i].style.display = "";
-                                       } else {
-                                           tr[i].style.display = "none";
-                                       }
-                                   }
-                               }
-                           }
-                       </script>
-                       <script>
-                           function financije2() {
-                               var input, filter, table, tr, td, i;
-                               input = document.getElementById("financije2");
-                               filter = input.value.toUpperCase();
-                               table = document.getElementById("table");
-                               tr = table.getElementsByTagName("tr");
-                               for (i = 0; i < tr.length; i++) {
-                                   td = tr[i].getElementsByTagName("td")[2];
-                                   if (td) {
-                                       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                           tr[i].style.display = "";
-                                       } else {
-                                           tr[i].style.display = "none";
-                                       }
-                                   }
-                               }
-                           }
-                       </script>
-                       <script>
-                           function financije3() {
-                               var input, filter, table, tr, td, i;
-                               input = document.getElementById("financije3");
-                               filter = input.value.toUpperCase();
-                               table = document.getElementById("table");
-                               tr = table.getElementsByTagName("tr");
-                               for (i = 0; i < tr.length; i++) {
-                                   td = tr[i].getElementsByTagName("td")[3];
-                                   if (td) {
-                                       if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-                                           tr[i].style.display = "";
-                                       } else {
-                                           tr[i].style.display = "none";
-                                       }
-                                   }
-                               }
-                           }
-                       </script>
-                       <!-- END PAGE LEVEL SCRIPTS -->
-                   </body>
-     <!-- END BODY -->
+        </div>
+        <!--END MENU SECTION -->
+        <!--PAGE CONTENT -->
+        <div id="content">
+
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2> Pregled financija zgrada </h2>
+                    </div>
+                </div>
+
+                <hr />
+
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Podaci iz baze
+                            </div>
+                            <div class="form-group">
+                                <label>Odabir Zgrade:</label>
+                                <select class="form-control">
+                                    <option>-SVE ZGRADE-</option>
+                                    <option>Zgrada Ivana pl. Zajca 14</option>
+                                    <option>Zgrada Nikola Zrinskih 35</option>
+                                    <option>Vladimira Nazora, Varaždin</option>
+                                    <option>Marka Kovača, Ludbreg</option>
+                                    <option>Zgrada Nazorova 32</option>
+                                </select>
+                            </div>
+                            <label>Trenutno stanje računa:35.678.67</label>
+                            <div class="panel-body">
+                                <p>
+                                    <a href="#" class="btn btn-primary btn-xs btn-grad"> Novo stanje </a>
+                                </p>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Datum</th>
+                                                <th>Mjesec/Godina</th>
+                                                <th>Stanje kn</th>
+                                                <th>Aktivnost</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1.</td>
+                                                <td>30.5.2018.</td>
+                                                <td>
+                                                    "Svibanj/2018"
+                                                </td>
+                                                <td>35.876,34</td>
+                                                <td class="col-md-2">
+                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
+                                                    <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>1.</td>
+                                                <td>30.4.2018.</td>
+                                                <td>
+                                                    "Travanj/2018"
+                                                </td>
+                                                <td>30.111,34</td>
+                                                <td class="col-md-2">
+                                                    <a href="#" class="btn btn-primary btn-xs btn-grad">Uredi</a>
+                                                    <a href="#" class="btn btn-danger btn-xs btn-grad">Briši</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--END PAGE CONTENT -->
+
+</body>
 </html>
+
+<!--END MAIN WRAPPER -->
+<!-- FOOTER -->
+<div id="footer">
+    <p>&copy;  binarytheme &nbsp;2014 &nbsp;</p>
+</div>
+<!--END FOOTER -->
+<!-- GLOBAL SCRIPTS -->
+<script type="text/javascript" src="table_script.js"></script>
+<script src="assets/plugins/jquery-2.0.3.min.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/plugins/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<!-- END GLOBAL SCRIPTS -->
+<!-- PAGE LEVEL SCRIPTS -->
+<script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="assets/plugins/dataTables/brisanje.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#dataTables-example').dataTable();
+    });
+</script>
+
+
+<!-- END PAGE LEVEL SCRIPTS -->
+<!-- END BODY -->
