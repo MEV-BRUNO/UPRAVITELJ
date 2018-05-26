@@ -116,7 +116,7 @@
                         <i class="icon-question"></i> O PROJEKTU
                     </a>
 
-          
+
                 <li class="panel ">
                     <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-rod">
                         <i class="icon-tasks"> </i> ADMINISTRATIVNI DIO-stanari
@@ -138,58 +138,84 @@
         </div>
         <!--END MENU SECTION -->
         <!--PAGE CONTENT -->
-        <div class="container">
-            <h1>Popis zgrada</h1>
-            <label>
-                <input type="text" id="financije" onkeyup="financije()" placeholder="Filter/zgrada" title="Type in a name">
-            </label>
-            <label>
-                <input type="text" id="financije1" onkeyup="financije1()" placeholder="Filter/mjesec" title="Type in a name">
-            </label>
-            <label>
-                <input type="text" id="financije2" onkeyup="financije2()" placeholder="Filter/godina" title="Type in a name">
-            </label>
-            <label>
-                <input type="text" id="financije3" onkeyup="financije3()" placeholder="Filter/izvjesce" title="Type in a name">
-            </label>
-            <div id="table" class="table-editable">
-                <span class="table-add glyphicon glyphicon-plus"></span>
-                <table class="table">
-                    <tr>
-                        <th>Ime zgrade</th>
-                        <th>Novci/kraj mjeseca</th>
-                        <th>Novci/Godina</th>
-                        <th>Financijsko izvjesce/kraj mjeseca</th>
-                    </tr>
-                    <tr>
-                        <td contenteditable="true">Unos</td>
-                        <td contenteditable="true">Unos</td>
-                        <td contenteditable="true">Unos</td>
-                        <td contenteditable="true">Unos</td>
-                        <td>
-                            <span class="table-remove glyphicon glyphicon-remove"></span>
-                        </td>
-                        <td>
-                            <span class="table-up glyphicon glyphicon-arrow-up"></span>
-                            <span class="table-down glyphicon glyphicon-arrow-down"></span>
-                        </td>
-                    </tr>
-                    <!-- This is our clonable table line -->
-                    <tr class="hide">
-                        <td contenteditable="true">Unos</td>
-                        <td contenteditable="true">Unos</td>
-                        <td contenteditable="true">Unos</td>
-                        <td contenteditable="true">Unos</td>
-                        <td>
-                            <span class="table-remove glyphicon glyphicon-remove"></span>
-                        </td>
-                        <td>
-                            <span class="table-up glyphicon glyphicon-arrow-up"></span>
-                            <span class="table-down glyphicon glyphicon-arrow-down"></span>
-                        </td>
-                    </tr>
-                </table>
+        <div id="content">
+
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2> Pregled financija zgrada </h2>
+                    </div>
+                </div>
+
+                <hr />
+
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Podaci iz baze
+                            </div>
+                            <div class="form-group">
+                                <label>Odabir Zgrade:</label>
+                                <select class="form-control">
+                                    <option>-SVE ZGRADE-</option>
+                                    <option>Zgrada Ivana pl. Zajca 14</option>
+                                    <option>Zgrada Nikola Zrinskih 35</option>
+                                    <option>Vladimira Nazora, Varaždin</option>
+                                    <option>Marka Kovača, Ludbreg</option>
+                                    <option>Zgrada Nazorova 32</option>
+                                </select>
+                            </div>
+                            <label>Trenutno stanje računa:35.678.67</label>
+                            <div class="panel-body">
+                                <p>
+                                    <a href="#" class="btn btn-primary btn-xs btn-grad"> Novo stanje </a>
+                                </p>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Datum</th>
+                                                <th>Mjesec/Godina</th>
+                                                <th>Stanje kn</th>
+                   
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1.</td>
+                                                <td>30.5.2018.</td>
+                                                <td>
+                                                    "Svibanj/2018"
+                                                </td>
+                                                <td>35.876,34</td>
+                                             
+                                            </tr>
+                                            <tr>
+                                                <td>1.</td>
+                                                <td>30.4.2018.</td>
+                                                <td>
+                                                    "Travanj/2018"
+                                                </td>
+                                                <td>30.111,34</td>
+                                              
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                    </div>
+
+                </div>
+
             </div>
+
         </div>
         <!--END PAGE CONTENT -->
 
