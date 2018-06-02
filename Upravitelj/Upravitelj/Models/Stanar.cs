@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,18 +21,23 @@ namespace Upravitelj.Models
         public int vrsta_korisnika { get; set; }
 
         [StringLenght(20)]
+        [Required]
         public string mob { get; set; }
 
         [EmailAddress]
+        [Required]
         public char email { get; set; }
 
         [Range(6, 20, ErrorMessage = "Lozinka se mora sastojati od 6 - 20 znakova!")]
+        [Required]
         public char lozinka { get; set; }
 
         [StringLenght(100)]
+        [Required]
         public string aktivacijski_link { get; set; }
 
         [Range(typeof(bool), "1", "0")]
+        [Required]
         public int aktivan { get; set; }
 
     }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,12 +12,15 @@ namespace Upravitelj.Models
         public int id_zgrada { get; set; }
 
         [Range(1, 50, ErrorMessage = "Naziv zgrade je obavezan!")]
+        [Required]
         public string naziv { get; set; }
 
         [Range(1, 40, ErrorMessage = "Naziv ulice je obavezan!")]
+        [Required]
         public string ulica { get; set; }
 
         [Range(1, 30, ErrorMessage = "Naziv grada je obavezan!")]
+        [Required]
         public string grad { get; set; }
 
         [Required]
