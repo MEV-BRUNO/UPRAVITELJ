@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -21,6 +21,7 @@ namespace Upravitelj.Models
 
         [Required(ErrorMessage = "Opis je obavezan!")]
         public string opis { get; set; }
+
 
         [Required]
         public char dokument { get; set; }
