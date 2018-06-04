@@ -116,6 +116,20 @@ CREATE TABLE IF NOT EXISTS `zgrada` (
   PRIMARY KEY (`id_zgrada`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci AUTO_INCREMENT=1 ;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Arhiva`
+--
+
+CREATE TABLE IF NOT EXISTS `Arhiva` (
+  `id_arhiva` int(11) NOT NULL,
+  `naziv` varchar(100) CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL,
+  `datoteka` varchar(100) CHARACTER SET utf32 COLLATE utf32_croatian_ci NOT NULL,
+  PRIMARY KEY (`id_arhiva`),
+  UNIQUE KEY `id_arhiva_UNIQUE` (`id_arhiva`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
