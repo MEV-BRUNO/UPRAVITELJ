@@ -1,0 +1,44 @@
+﻿@using Upravitelj.Models
+@model Upravitelj.Models.PrijavaViewModel
+
+
+@{
+	ViewBag.Title = "Login - ";
+}
+
+&emsp;&emsp;
+
+<div>
+    <section id="loginForm">
+        @using (Html.BeginForm("Login", "Prijava", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+        @Html.AntiForgeryToken()
+
+        <div class="bg-primary rounded form-group text-white" style="height: 45px; padding:10px; width: 25%;"><p style="text-align:center;">Vaše korisničko ime i lozinka</p> </div>
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.TextBoxFor(Model => Model.UserName, new { Value = "Korisničko ime", @class = "form-control", @onclick = "this.value =''" })
+        </div>
+        <div class="form-group">
+            @Html.PasswordFor(Model => Model.Password, new { Value = "Lozinka", @class = "form-control", @onclick = "this.value =''" })
+        </div>
+
+        <div class="form-group">
+            <div>
+                <input type="submit" value="Prijava" class="btn btn-danger" />
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Prijava", "Login", "Prijava", new { @Style = "color: black;", @class = "mojilink;" })
+            &emsp;
+
+
+            @Html.ActionLink("Zaboravljena lozinka", "ZaboravljenaLozinka", "Prijava", new { @Style = "color: black;", @class = "mojilink;" })
+
+            &emsp;
+
+            @Html.ActionLink("Registracija", "Registracija", "Prijava", new { @Style = "color: black;", @class = "mojilink;" })
+        </div>
+        }
+    </section>
+</div>
