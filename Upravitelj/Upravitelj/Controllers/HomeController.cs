@@ -26,5 +26,30 @@ namespace Upravitelj.Controllers
 
             return View();
         }
+        public ActionResult _Upiti(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+		public ActionResult CreateUpit(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+		public ActionResult DeleteUpit(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+		public ActionResult EditUpit(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+		public ActionResult Upiti(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
     }
 }
