@@ -11,14 +11,14 @@ namespace Upravitelj.Models
         [Required(ErrorMessage = "Unesite vaš ID!")]
         public double id_stanar { get; set; }
 
-        [Required(1, 50, ErrorMessage = "Unesite vaše ime i prezime!")]
-        public string ime_prezime { get; set; }
+        [Required(ErrorMessage = "Unesite vaše ime i prezime!")]
+        public string Ime_prezime { get; set; }
 
         [Required]
         public int id_zgrada { get; set; }
 
         [Required]
-        public int vrsta_korisnika { get; set; }
+        public string vrsta_korisnika { get; set; }
 
         [StringLenght(20)]
         [Required]

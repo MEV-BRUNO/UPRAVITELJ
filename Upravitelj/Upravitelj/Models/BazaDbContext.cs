@@ -5,7 +5,7 @@ using System.Web;
 using Upravitelj.Models;
 using System.Data.Entity;
 
-namespace MVC_Predavanje.Models
+namespace Upravitelj.Models
 {
     public class BazaDbContext : DbContext
     {

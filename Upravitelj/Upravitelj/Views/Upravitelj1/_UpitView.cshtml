@@ -1,0 +1,30 @@
+﻿@model PagedList.IPagedList<Upravitelj.Models.Upit>
+
+<table class="table" id="dataTables-example">
+    <tr>
+        <th>
+            @Html.ActionLink("Naslov", "UpitView", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+        </th>
+        <th>
+            Stanar
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.zupanija)
+            </td>
+            <td>
+                <a href="#" data-toggle="modal" data-url="@Url.Action("Dodaj","Home",new { id = item.id })" id="editAsset" class="btn btn-info btn-xs ">Uredi</a>
+                <a href="#" data-toggle="modal" data-url="@Url.Action("Delete","Home",new { id = item.id })" id="deleteAsset" class="btn btn-info btn-xs ">Briši</a>
+            </td>
+        </tr>
+    }
+
+</table>
