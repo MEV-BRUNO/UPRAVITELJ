@@ -1,0 +1,47 @@
+﻿@model PagedList.IPagedList<Upravitelj.Models.Obavijest>
+
+<table class="table" id="dataTables-example">
+    <tr>
+        <th>
+            @Html.ActionLink("Naziv", "ObavijestView", new { Sorting_Order = ViewBag.SortingName, Filter_Value = ViewBag.FilterValue })
+        </th>
+        <th>
+            Obavijest
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.datum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.naslov)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.opis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dokument)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.slika)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.kategorija)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vidljiv)
+        </td>
+        <td>
+            <a href="#" data-toggle="modal" data-url="@Url.Action("Edit","Home",new { id = item.id })" id="editAsset" class="btn btn-info btn-xs ">Uredi</a>
+            <a href="#" data-toggle="modal" data-url="@Url.Action("Delete","Home",new { id = item.id })" id="deleteAsset" class="btn btn-info btn-xs ">Briši</a>
+        </td>
+    </tr>
+    }
+
+</table>
+
+
