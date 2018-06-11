@@ -1,0 +1,87 @@
+﻿@Model.Upravitelj.Models.Upit
+<script src="@Url.Content("~/Scripts/js/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/js/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/js/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Info o upitu</h4>
+        </div>
+        @using (Ajax.BeginForm("", "Upravitelj", new AjaxOptions
+        {
+            HttpMethod = "Get",
+
+
+        }, new { @class = "form-horizontal", role = "form" }))
+
+
+        {
+            <div class="modal-body">
+                <div class="form-horizontal">
+
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <b>Id_upit:</b>
+                        </div>
+                        <div class="col-md-10">
+                            @Model.id_upit
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <b>Id_stanar:</b>
+                        </div>
+                        <div class="col-md-10">
+                            @Model.id_stanar
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <b>Datum:</b>
+                        </div>
+                        <div class="col-md-10">
+                            @Model.datum
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <b>Naslov:</b>
+                        </div>
+                        <div class="col-md-10">
+                            @Model.naslov
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <b>Opis:</b>
+                        </div>
+                        <div class="col-md-10">
+                            @Model.opis
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <b>Dogovoreno:</b>
+                        </div>
+                        <div class="col-md-10">
+                            @Model.dogovoreno
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+
+                                <a href="@Url.Action("UpitiAdmin")" class="btn btn-default btn-md btn-grad">Povratak</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

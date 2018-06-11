@@ -7,8 +7,8 @@ using System.Net;
 using System.Threading.Tasks;
 using Upravitelj.Models;
 using PagedList;
-namespace Upravitelj.Controllers
-{
+namespace Upravitelj.Controllers { 
+
     public class StanarController : Controller
     {
         private StanarBazaPodataka stanarBazaPodataka = new StanarBazaPodataka();
@@ -65,7 +65,7 @@ namespace Upravitelj.Controllers
                 return View(Popis);
             }
         }
-        //Crudovi
+        //Crudovi-dodaj
         public ActionResult Create()
         {
             if (Request.IsAjaxRequest())
@@ -110,7 +110,7 @@ namespace Upravitelj.Controllers
             }
             return new HttpStatusCodeResult(200);
         }
-
+        //edit
         public ActionResult Edit(int id)
         {
             Stanar st = new Stanar();
@@ -152,7 +152,7 @@ namespace Upravitelj.Controllers
 
             return RedirectToAction("StanarView");
         }
-
+        //brisi
         public ActionResult Delete(int id)
         {
             Stanar st = new Stanar();
@@ -183,5 +183,16 @@ namespace Upravitelj.Controllers
 
             return RedirectToAction("StanarView");
         }
+        //info
+            [HttpPost]
+            public ActionResult StanarInfo(int id)
+            {
+                Stanar st = baza.Stanari.Find(id);
+
+
+                return View(st);
+
+            }
+       
     }
-}     
+}
