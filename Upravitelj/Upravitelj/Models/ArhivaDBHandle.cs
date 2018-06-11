@@ -11,7 +11,7 @@ using PagedList;
 namespace Upravitelj.Models
 {
 
-    public class ZgradaDBHandle
+    public class ArhivaDBHandle
     {
         private MySqlConnection con;
         string str = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
@@ -22,15 +22,15 @@ namespace Upravitelj.Models
             con = new MySqlConnection(constring);
         }
 
-        public List<Zgrada> GetZgrade()
+        public List<Arhiva> GetArhiva()
         {
             connection();
-            List<Zgrada> zgrade = new List<Grad>();
+            List<Arhiva> arhiva = new List<Arhiva>();
             con.ConnectionString = str;
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT id_zgrada, naziv, ulica, grad, broj_stanara  FROM Zgrada ORDER BY naziv ASC";
+                cmd.CommandText = "SELECT id_arhiva, naziv, datoteka  FROM Arhiva ORDER BY naziv ASC";
                 con.Open();
                 using (MySqlDataReader sdr = cmd.ExecuteReader())
                 {
@@ -38,33 +38,31 @@ namespace Upravitelj.Models
                     {
                         while (sdr.Read())
                         {
-                            Zgrada emp = new Zgrada()
+                            Arhiva emp = new Arhiva()
                             {
-                                id_zgrada = Convert.ToInt32(sdr["id_zgrada"]),
+                                id_arhiva = Convert.ToInt32(sdr["id_arhiva"]),
                                 naziv = sdr["naziv"].ToString(),
-                                ulica = sdr["ulica"].ToString(),
-                                grad = sdr["grad"].ToString(),
-                                broj_stanara = Convert.ToInt32(sdr["broj_stanara"])
+                                datoteka = sdr["datoteka"].ToString(),
                             };
-                            if (emp.naziv.Length > 0 && emp.ulica.Length > 0 && emp.grad.Length > 0 && emp.broj_stanara.Length > 0)
-                                gradovi.Add(emp);
+                            if (emp.naziv.Length > 0 && emp.datoteka.Length > 0)
+                                arhiva.Add(emp);
                         }
                     }
                 }
                 con.Close();
             }
-            return zgrade;
+            return arhiva;
         }
 
-        public List<Zgrada> GetZgrada_2(string searchData)
+        public List<Arhiva> GetArhiva_2(string searchData)
         {
             connection();
-            List<Zgrada> zgrade = new List<Zgrada>();
+            List<Arhiva> arhiva = new List<Arhiva>();
             con.ConnectionString = str;
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT id_zgrada, naziv, ulica, grad, broj_stanara  FROM Zgrada WHERE " +
+                cmd.CommandText = "SELECT id_zgrada, naziv, datoteka  FROM Arhiva WHERE " +
                     " naziv like '%"+ searchData+"%' " +
                     " ORDER BY id ASC";
                 con.Open();
@@ -74,25 +72,23 @@ namespace Upravitelj.Models
                     {
                         while (sdr.Read())
                         {
-                            Zgrada emp = new Zgrada()
+                            Arhiva emp = new Arhiva()
                             {
-                                id_zgrada = Convert.ToInt32(sdr["id_zgrada"]),
+                                id_arhiva = Convert.ToInt32(sdr["id_arhiva"]),
                                 naziv = sdr["naziv"].ToString(),
-                                ulica = sdr["ulica"].ToString(),
-                                grad = sdr["grad"].ToString(),
-                                broj_stanara = Convert.ToInt32(sdr["broj_stanara"])
+                                datoteka = sdr["datoteka"].ToString(),
                             };
-                            if (emp.naziv.Length > 0 && emp.ulica.Length > 0 && emp.grad.Length > 0 && emp.broj_stanara.Length > 0)
-                                gradovi.Add(emp);
+                            if (emp.naziv.Length > 0 && emp.ulica.Length > 0)
+                                arhiva.Add(emp);
                         }
                     }
                 }
                 con.Close();
             }
-            return zgrade;
+            return arhiva;
         }
 
-        public string addZgrada(Zgrada data)
+        public string addArhiva(Arhiva data)
         {
             try
             {
@@ -100,14 +96,12 @@ namespace Upravitelj.Models
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = con;
-                    cmd.CommandText = "INSERT INTO zgrada(id_zgrada,naziv,ulica,grad,broj_stanara) " +
-                        " VALUES(@id_zgrada,@naziv,@ulica,@grad,@broj_stanara)";
+                    cmd.CommandText = "INSERT INTO Arhiva(id_arhiva,naziv,datoteka) " +
+                        " VALUES(@id_arhiva,@naziv,@datoteka)";
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@id_zgrada", data.id_zgrada);
+                    cmd.Parameters.AddWithValue("@id_arhiva", data.id_zgrada);
                     cmd.Parameters.AddWithValue("@naziv", data.naziv);
-                    cmd.Parameters.AddWithValue("@ulica", data.ulica);
-                    cmd.Parameters.AddWithValue("@grad", data.grad);
-                    cmd.Parameters.AddWithValue("@broj_stanara", data.broj_stanara);
+                    cmd.Parameters.AddWithValue("@datoteka", data.datoteka);
 
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -121,15 +115,15 @@ namespace Upravitelj.Models
                 return "Error";
             }
         }
-        public Zgrada getZgradaID(int _id)
+        public Arhiva getArhivaID(int _id)
         {
             connection();
-            Zgrada zgrada = new Zgrada();
+            Arhiva arhiva = new Arhiva();
             con.ConnectionString = str;
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT id_zgrada, naziv, ulica, grad, broj_stanara  FROM Zgrada WHERE id=+@id";
+                cmd.CommandText = "SELECT id_arhiva, naziv, datoteka  FROM Arhiva WHERE id=+@id";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@id", _id);
                 con.Open();
@@ -139,23 +133,21 @@ namespace Upravitelj.Models
                     {
                         while (sdr.Read())
                         {
-                            zgrada = new Zgrada()
+                            arhiva = new Arhiva()
                             {
-                                id_zgrada = Convert.ToInt32(sdr["id_zgrada"]),
+                                id_arhiva = Convert.ToInt32(sdr["id_arhiva"]),
                                 naziv = sdr["naziv"].ToString(),
-                                ulica = sdr["ulica"].ToString(),
-                                grad = sdr["grad"].ToString(),
-                                broj_stanara = Convert.ToInt32(sdr["broj_stanara"])
+                                datoteka = sdr["datoteka"].ToString(),
                             };
                         }
                     }
                 }
                 con.Close();
             }
-            return zgrada;
+            return arhiva;
         }
 
-        public string updateZgrada(Zgrada data)
+        public string updateArhiva(Arhiva data)
         {
             try
             {
@@ -163,13 +155,12 @@ namespace Upravitelj.Models
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = con;
-                    cmd.CommandText = "UPDATE zgrada SET naziv = @naziv, ulica = @ulica, grad = @grad, broj_stanara = @broj_stanara  WHERE id = @id";
+                    cmd.CommandText = "UPDATE Arhiva SET naziv = @naziv, datoteka = @datoteka  WHERE id = @id";
                     cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@id", data.id);
+                    cmd.Parameters.AddWithValue("@id_arhiva", data.id_arhiva);
                     cmd.Parameters.AddWithValue("@naziv", data.naziv);
-                    cmd.Parameters.AddWithValue("@ulica", data.ulica);
-                    cmd.Parameters.AddWithValue("@grad", data.grad);
-                    cmd.Parameters.AddWithValue("@broj_stanara", data.broj_stanara);
+                    cmd.Parameters.AddWithValue("@datoteka", data.datoteka);
+
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -183,7 +174,7 @@ namespace Upravitelj.Models
             }
         }
 
-        public string deleteZgrada(int _id)
+        public string deleteArhiva(int _id)
         {
             try
             {
@@ -193,7 +184,7 @@ namespace Upravitelj.Models
                     cmd.Connection = con;
                     con.Open();
 
-                    cmd.CommandText = "DELETE FROM zgrada WHERE id = @id";
+                    cmd.CommandText = "DELETE FROM Arhiva WHERE id = @id";
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@id", _id);
                     cmd.ExecuteNonQuery();
@@ -208,5 +199,5 @@ namespace Upravitelj.Models
             }
         }
 
-        }
+    }
 }

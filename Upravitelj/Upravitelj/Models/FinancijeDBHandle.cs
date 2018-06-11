@@ -11,7 +11,7 @@ using PagedList;
 namespace Upravitelj.Models
 {
 
-    public class ZgradaDBHandle
+    public class FinancijeDBHandle
     {
         private MySqlConnection con;
         string str = ConfigurationManager.ConnectionStrings["MySqlConnection"].ConnectionString;
@@ -22,15 +22,15 @@ namespace Upravitelj.Models
             con = new MySqlConnection(constring);
         }
 
-        public List<Zgrada> GetZgrade()
+        public List<Financije> GetFinancije()
         {
             connection();
-            List<Zgrada> zgrade = new List<Grad>();
+            List<Financije> financije = new List<Financije>();
             con.ConnectionString = str;
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT id_zgrada, naziv, ulica, grad, broj_stanara  FROM Zgrada ORDER BY naziv ASC";
+                cmd.CommandText = "SELECT id_financija, id_zgrada, datum, stanje, FROM financije";
                 con.Open();
                 using (MySqlDataReader sdr = cmd.ExecuteReader())
                 {
@@ -38,35 +38,32 @@ namespace Upravitelj.Models
                     {
                         while (sdr.Read())
                         {
-                            Zgrada emp = new Zgrada()
+                            Financije emp = new Financije()
                             {
+                                id_financija = Convert.ToInt32(sdr["id_financija"]),
                                 id_zgrada = Convert.ToInt32(sdr["id_zgrada"]),
-                                naziv = sdr["naziv"].ToString(),
-                                ulica = sdr["ulica"].ToString(),
-                                grad = sdr["grad"].ToString(),
-                                broj_stanara = Convert.ToInt32(sdr["broj_stanara"])
+                                datum = sdr["datum"].datetime(),
+                                broj_stanara = Convert.ToInt64(sdr["stanje"])
                             };
-                            if (emp.naziv.Length > 0 && emp.ulica.Length > 0 && emp.grad.Length > 0 && emp.broj_stanara.Length > 0)
-                                gradovi.Add(emp);
+                            if (emp.id_financija.Length > 0)
+                                financije.Add(emp);
                         }
                     }
                 }
                 con.Close();
             }
-            return zgrade;
+            return financije;
         }
 
-        public List<Zgrada> GetZgrada_2(string searchData)
+        public List<Financije> GetFinancije_2(string searchData)
         {
             connection();
-            List<Zgrada> zgrade = new List<Zgrada>();
+            List<Financije> financije = new List<Financije>();
             con.ConnectionString = str;
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT id_zgrada, naziv, ulica, grad, broj_stanara  FROM Zgrada WHERE " +
-                    " naziv like '%"+ searchData+"%' " +
-                    " ORDER BY id ASC";
+                cmd.CommandText = "SELECT id_financija, id_zgrada, datum, stanje FROM financije ORDER BY id ASC";
                 con.Open();
                 using (MySqlDataReader sdr = cmd.ExecuteReader())
                 {
@@ -74,25 +71,24 @@ namespace Upravitelj.Models
                     {
                         while (sdr.Read())
                         {
-                            Zgrada emp = new Zgrada()
+                            Financije emp = new Financije()
                             {
+                                id_financija = Convert.ToInt32(sdr["id_financija"]),
                                 id_zgrada = Convert.ToInt32(sdr["id_zgrada"]),
-                                naziv = sdr["naziv"].ToString(),
-                                ulica = sdr["ulica"].ToString(),
-                                grad = sdr["grad"].ToString(),
-                                broj_stanara = Convert.ToInt32(sdr["broj_stanara"])
+                                datum = sdr["datum"].datetime(),
+                                stanje = Convert.ToInt64(sdr["stanje"])
                             };
-                            if (emp.naziv.Length > 0 && emp.ulica.Length > 0 && emp.grad.Length > 0 && emp.broj_stanara.Length > 0)
-                                gradovi.Add(emp);
+                            if (emp.id_financija.Length > 0)
+                                financije.Add(emp);
                         }
                     }
                 }
                 con.Close();
             }
-            return zgrade;
+            return financije;
         }
 
-        public string addZgrada(Zgrada data)
+        public string addFinancije(Financije data)
         {
             try
             {
@@ -100,14 +96,14 @@ namespace Upravitelj.Models
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = con;
-                    cmd.CommandText = "INSERT INTO zgrada(id_zgrada,naziv,ulica,grad,broj_stanara) " +
-                        " VALUES(@id_zgrada,@naziv,@ulica,@grad,@broj_stanara)";
+                    cmd.CommandText = "INSERT INTO financije(id_financije,id_zgrada,datum,stanje) " +
+                        " VALUES(@id_financija,@id_zgrada,@datum,@stanje)";
                     cmd.CommandType = CommandType.Text;
+                    cmd.Parameters.AddWithValue("@id_financija", data.id_financija);
                     cmd.Parameters.AddWithValue("@id_zgrada", data.id_zgrada);
-                    cmd.Parameters.AddWithValue("@naziv", data.naziv);
-                    cmd.Parameters.AddWithValue("@ulica", data.ulica);
-                    cmd.Parameters.AddWithValue("@grad", data.grad);
-                    cmd.Parameters.AddWithValue("@broj_stanara", data.broj_stanara);
+                    cmd.Parameters.AddWithValue("@datum", data.datum);
+                    cmd.Parameters.AddWithValue("@stanje", data.stanje);
+
 
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -121,15 +117,15 @@ namespace Upravitelj.Models
                 return "Error";
             }
         }
-        public Zgrada getZgradaID(int _id)
+        public Financije getFinancijeID(int _id)
         {
             connection();
-            Zgrada zgrada = new Zgrada();
+            Financije financije = new Financije();
             con.ConnectionString = str;
             using (MySqlCommand cmd = new MySqlCommand())
             {
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT id_zgrada, naziv, ulica, grad, broj_stanara  FROM Zgrada WHERE id=+@id";
+                cmd.CommandText = "SELECT id_financija, id_zgrada, datum, stanje  FROM financije WHERE id=+@id";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@id", _id);
                 con.Open();
@@ -139,23 +135,22 @@ namespace Upravitelj.Models
                     {
                         while (sdr.Read())
                         {
-                            zgrada = new Zgrada()
+                            financije = new Financije()
                             {
+                                id_financija = Convert.ToInt32(sdr["id_financija"]),
                                 id_zgrada = Convert.ToInt32(sdr["id_zgrada"]),
-                                naziv = sdr["naziv"].ToString(),
-                                ulica = sdr["ulica"].ToString(),
-                                grad = sdr["grad"].ToString(),
-                                broj_stanara = Convert.ToInt32(sdr["broj_stanara"])
+                                datum = sdr["datum"].datetime(),
+                                stanje = Convert.ToInt64(sdr["stanje"])
                             };
                         }
                     }
                 }
                 con.Close();
             }
-            return zgrada;
+            return financije;
         }
 
-        public string updateZgrada(Zgrada data)
+        public string updateFinancije(Financije data)
         {
             try
             {
@@ -163,13 +158,11 @@ namespace Upravitelj.Models
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = con;
-                    cmd.CommandText = "UPDATE zgrada SET naziv = @naziv, ulica = @ulica, grad = @grad, broj_stanara = @broj_stanara  WHERE id = @id";
+                    cmd.CommandText = "UPDATE financije SET datum = @datum, stanje = @stanje WHERE id = @id";
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@id", data.id);
-                    cmd.Parameters.AddWithValue("@naziv", data.naziv);
-                    cmd.Parameters.AddWithValue("@ulica", data.ulica);
-                    cmd.Parameters.AddWithValue("@grad", data.grad);
-                    cmd.Parameters.AddWithValue("@broj_stanara", data.broj_stanara);
+                    cmd.Parameters.AddWithValue("@datum", data.datum);
+                    cmd.Parameters.AddWithValue("@stanje", data.stanje);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
@@ -183,7 +176,7 @@ namespace Upravitelj.Models
             }
         }
 
-        public string deleteZgrada(int _id)
+        public string deleteFinancije(int _id)
         {
             try
             {
@@ -193,7 +186,7 @@ namespace Upravitelj.Models
                     cmd.Connection = con;
                     con.Open();
 
-                    cmd.CommandText = "DELETE FROM zgrada WHERE id = @id";
+                    cmd.CommandText = "DELETE FROM financije WHERE id = @id";
                     cmd.CommandType = CommandType.Text;
                     cmd.Parameters.AddWithValue("@id", _id);
                     cmd.ExecuteNonQuery();

@@ -27,7 +27,117 @@ namespace Upravitelj.Controllers
             return View();
         }
 
-        //CRUD operacije
+        //CRUD operacije za Arhivu
+
+        public ActionResult Create()
+        {
+            if (Request.IsAjaxRequest())
+            {
+                ViewBag.IsUpdate = false;
+                return View("CreateArhiva");
+            }
+            else
+
+                return View("CreateArhiva");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(Arhiva arhiva)
+        {
+            if (!ModelState.IsValid)
+            {
+                return PartialView("CreateArhiva", arhiva);
+            }
+            baza.PopisArhiva.Add(arhiva);
+            baza.SaveChanges();
+            return new HttpStatusCodeResult(200);
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            Arhiva arhiva;
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
+            arhiva = baza.PopisArhiva.Find(id);
+            if (arhiva == null)
+            {
+                return HttpNotFound();
+            }
+            if (Request.IsAjaxRequest())
+            {
+                ViewBag.IsUpdate = false;
+                return View("EditArhiva", arhiva);
+            }
+            else
+
+                return View("EditArhiva", arhiva);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "id_arhiva, naziv, datoteka")] Arhiva arhiva)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                return PartialView("EditArhiva", arhiva);
+            }
+            Arhiva A = baza.PopisArhiva.Where(
+              x => x.id == arhiva.id).SingleOrDefault();
+
+            if (arhiva.id != 0 && Z != null)// update
+            {
+                baza.Entry(Z).CurrentValues.SetValues(arhiva);
+            }
+            else
+            {
+                baza.PopisArhiva.Add(arhiva);
+            }
+            baza.SaveChanges();
+            if (Request.IsAjaxRequest())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+
+            return RedirectToAction("ArhivaView");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            Arhiva arhiva = baza.PopisArhiva.Find(id);
+            if (Request.IsAjaxRequest())
+            {
+                ViewBag.IsUpdate = false;
+                return View("DeleteArhiva", arhiva);
+            }
+            else
+
+                return View("DeleteArhiva", arhiva);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeletePost(int id)
+        {
+            Arhiva A = baza.PopisArhiva.Where(
+              x => x.id == id).SingleOrDefault();
+
+            if (A != null)
+            {
+                baza.PopisArhiva.Remove(A);
+                baza.SaveChanges();
+            }
+            if (Request.IsAjaxRequest())
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.OK);
+            }
+
+            return RedirectToAction("ArhivaView");
+        }
+
+        //CRUD operacije za Zgrade
+
         public ActionResult Create()
         {
             if (Request.IsAjaxRequest())
