@@ -1,0 +1,112 @@
+﻿
+@model PagedList.IPagedList<Upravitelj.Models.Upit>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "View";
+}
+
+@Styles.Render("~/assets/css")
+
+<h2>View</h2>
+<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-url="@Url.Action("Dodaj","Home")" id="btnCreateAsset">
+    <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span> Dodaj kontakt
+</button>
+
+@using (Html.BeginForm("UpitView", "Home", FormMethod.Get))
+{
+    <p>
+        Search Name: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+        <input type="submit" value="Find" />
+    </p>
+}
+<!-- Partial View -->
+@Html.Partial("_UpitView", Model)
+<br />
+<div id="Paginator">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, Page_No => Url.Action("UpitView",
+                                new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
+
+</div>
+<div class="modal fade" id="assetModal" tabindex="-1" role="dialog" aria-labelledby="assetModal" aria-hidden="true" data-backdrop="static">
+    <div id="assetContainer">
+    </div>
+</div>
+
+<!-- javascript za upravljanje modal panelom -->
+
+<script src="@Url.Content("~/Scripts/js//jquery-1.7.1.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/js/jquery-ui-1.8.20.min.js")" type="text/javascript"></script>
+
+@Scripts.Render("~/jTable/js")
+
+<script>
+    var rowDelete;
+    $(document).ready(function () {
+
+        $("#btnCreateAsset").click(function (e) {
+            var url = $(this).attr("data-url");
+            $.ajax({
+                url: url,
+                success: function (data) {
+                    $('#assetContainer').html(data);
+                    $('#assetModal').modal('show');
+                },
+                error: function (xhr, ajaxOptions, thrownError) { alert(xhr.responseText); }
+            });
+        });
+
+        $('#dataTables-example').on("click", "#editAsset", function (event) {
+            event.preventDefault();
+
+            var url = $(this).attr("data-url");
+            $.get(url, function (data) {
+                $('#assetContainer').html(data);
+
+                $('#assetModal').modal('show');
+            });
+        });
+
+        $('#dataTables-example').on("click", "#deleteAsset", function (event) {
+            event.preventDefault();
+            var url = $(this).attr("data-url");
+
+            $.get(url, function (data) {
+                $('#assetContainer').html(data);
+
+                $('#assetModal').modal('show');
+            });
+
+        });
+
+
+
+    });
+
+</script>
+
+<script type="text/javascript">
+
+    function CreateSuccess() {
+        $('#assetModal').modal('hide');
+        $('#assetContainer').html("");
+        location.reload(true);
+    }
+
+
+    function EditSuccess() {
+        $('#assetModal').modal('hide');
+        $('#assetContainer').html("");
+        location.reload(true);
+
+
+    }
+
+    function DeleteSuccess() {
+        location.reload(true);
+
+    }
+
+
+</script>
